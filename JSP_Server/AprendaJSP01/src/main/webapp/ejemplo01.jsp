@@ -38,7 +38,7 @@
 <p>4. La hora actual del servidor es; <%=fechaSistema()%></p>
 
 <%
-    out.println("<p>5.La hora del servidor es: "+fechaSistema()+"</P>");
+    System.out.println("<p>5.La hora del servidor es: "+fechaSistema()+"</P>");
 %>
 </body>
 </html>
