@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%--He hecho este cambio--%>
     <title>Aprende JSP</title>
 </head>
 <body>
@@ -19,3 +20,4 @@ Primer apellido: <%= request.getParameter("apellido1")%> <br>
 Segundo apellido: <%= request.getParameter("apellido2")%> <br>
 </body>
 </html>
+<%--Y este otro cambio--%>
