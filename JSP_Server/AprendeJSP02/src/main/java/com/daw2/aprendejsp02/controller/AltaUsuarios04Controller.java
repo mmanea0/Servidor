@@ -67,7 +67,7 @@ public class AltaUsuarios04Controller extends HttpServlet {
             errors.put("apellido1","El apellido1 no puede estar vacio");
 
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("usuariio",usuario);
+        request.setAttribute("usuario",usuario);
         request.setAttribute("errors",errors);
         request.setAttribute("usuarios",usuarios);
 
