@@ -28,13 +28,17 @@ public class AltaUsuarios04Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("nif","");
-        request.setAttribute("nombre","");
-        request.setAttribute("apellido1","");
-        request.setAttribute("apellido2","");
-        request.setAttribute("errors",new HashMap());
+        Usuario usuario=new Usuario();
+        usuario.setNif("");
+        usuario.setNombre("");
+        usuario.setApellido1("");
+        usuario.setApellido2("");
+
+        request.setAttribute("usuario",usuario);
         request.setAttribute("usuarios",usuarios);
+        request.setAttribute("errors",new HashMap());
 
         request.getRequestDispatcher("/ej04/formulario.jsp").forward(request,response);
     }
