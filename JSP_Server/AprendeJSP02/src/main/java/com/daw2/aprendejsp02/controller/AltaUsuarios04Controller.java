@@ -54,10 +54,8 @@ public class AltaUsuarios04Controller extends HttpServlet {
         usuario.setApellido1(apellido1);
         usuario.setApellido2(apellido2);
 
-        //empty quiere decir si esta vacio el campo
         Map errors= new HashMap();
         if (nif.isEmpty())
-            //la sintasis es el nombre del objeto + el mensaje que debe aparecer
             errors.put("nif","El nif no puede estar vacio");
         if (nombre.isEmpty())
             errors.put("nombre","El nombre no puede estar vacio");
@@ -65,18 +63,13 @@ public class AltaUsuarios04Controller extends HttpServlet {
             errors.put("apellido1","El apellido1 no puede estar vacio");
 
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("nif",nif);
-        request.setAttribute("nombre",nombre);
-        request.setAttribute("apellido1",apellido1);
-        request.setAttribute("apellido2",apellido2);
-        //para mostrar los errores que se han producido
+        request.setAttribute("usuariio",usuario);
         request.setAttribute("errors",errors);
-        //añadir datos
         request.setAttribute("usuarios",usuarios);
 
-        //en funcion de si hay error o no te manda a la ficha o al formulario de vuelta
         if(errors.isEmpty()) {
-            request.getRequestDispatcher("/ej03/ficha.jsp").forward(request, response);
+            usuarios.add(usuario);
+            request.getRequestDispatcher("/ej03/formulario.jsp").forward(request, response);
         }else
             request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
     }
