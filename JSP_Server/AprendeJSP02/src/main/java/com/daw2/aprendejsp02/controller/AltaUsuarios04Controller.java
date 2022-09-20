@@ -16,7 +16,7 @@ import java.util.Map;
 
 //el value sirve para poner la forma abreviada en el navegador
 //el value va con barra y en l form va sin barra
-@WebServlet(name = "AltaUsuariosController", value ="/usuarios/alta_ej04")
+@WebServlet(name = "AltaUsuarios04Controller", value ="/usuarios/alta_ej04")
 public class AltaUsuarios04Controller extends HttpServlet {
     private List<Usuario> usuarios;
 
