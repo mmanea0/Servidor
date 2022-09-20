@@ -30,7 +30,7 @@
 
 <h1>Alta de formulario</h1>
 <table>
-  <form action="usuarios/alta" method="post">
+  <form action="usuarios/alta_ej04" method="post">
     <tr>
       <th>
         NIF <input type="text" name="nif" value="<%=usuario.getNif()%>">
@@ -54,6 +54,23 @@
       <th> <input type="submit" name="registar"> </th>
     </tr>
   </form>
+</table>
+
+<table style="background-color: #cea4f6">
+  <tr>
+    <th>Nif</th>
+    <th>Nombre</th>
+    <th>Apellido1</th>
+    <th>Apellido2</th>
+  </tr>
+  <% for (Usuario us:usuarios){%>
+  <tr style="background-color: aqua">
+    <td><%=us.getNif()%></td>
+    <td><%=us.getNombre()%></td>
+    <td><%=us.getApellido1()%></td>
+    <td><%=us.getApellido2()%></td>
+  </tr>
+  <%}%>
 </table>
 
 </body>

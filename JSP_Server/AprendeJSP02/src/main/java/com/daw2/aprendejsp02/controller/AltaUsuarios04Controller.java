@@ -16,7 +16,7 @@ import java.util.Map;
 
 //el value sirve para poner la forma abreviada en el navegador
 //el value va con barra y en l form va sin barra
-@WebServlet(name = "AltaUsuariosController", value ="/usuarios/alta")
+@WebServlet(name = "AltaUsuariosController", value ="/usuarios/alta_ej04")
 public class AltaUsuarios04Controller extends HttpServlet {
     private List<Usuario> usuarios;
 
@@ -36,7 +36,7 @@ public class AltaUsuarios04Controller extends HttpServlet {
         request.setAttribute("errors",new HashMap());
         request.setAttribute("usuarios",usuarios);
 
-        request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
+        request.getRequestDispatcher("/ej04/formulario.jsp").forward(request,response);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class AltaUsuarios04Controller extends HttpServlet {
 
         if(errors.isEmpty()) {
             usuarios.add(usuario);
-            request.getRequestDispatcher("/ej03/formulario.jsp").forward(request, response);
+            request.getRequestDispatcher("/ej04/formulario.jsp").forward(request, response);
         }else
-            request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
+            request.getRequestDispatcher("/ej04/formulario.jsp").forward(request,response);
     }
 }
