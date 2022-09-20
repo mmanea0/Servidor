@@ -11,7 +11,7 @@
 
 <%
   Usuario usuario=(Usuario) request.getAttribute("usuario");
-  List <Usuario> usuarios=(List<Usuario>) request.getAttribute("usuario");
+  List <Usuario> usuarios= (List<Usuario>) request.getAttribute("usuarios");
   Map errors = (Map) request.getAttribute("errors");
 %>
 
