@@ -40,9 +40,9 @@ public class AltaUsuariosController extends HttpServlet {
         request.setAttribute("nombre",nombre);
         request.setAttribute("apellido1",apellido1);
         request.setAttribute("apellido2",apellido2);
-
         //para mostrar los errores que se han producido
         request.setAttribute("error",errors);
+
         //en funcion de si hay error o no te manda a la ficha o al formulario de vuelta
         if(errors.isEmpty())
             request.getRequestDispatcher("/ej03/ficha.jsp").forward(request,response);
