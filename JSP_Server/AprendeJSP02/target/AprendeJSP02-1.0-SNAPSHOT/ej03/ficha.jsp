@@ -29,6 +29,6 @@ Nombre: <%= nombre%> <br>
 Primer apellido: <%= apellido1%> <br>
 Segundo apellido: <%= apellido2%> <br>
 
-<a href=ej03/formulario.jsp> Nuevo usuario</a>
+<a href="usuarios/alta"> Nuevo usuario</a>
 </body>
 </html>
