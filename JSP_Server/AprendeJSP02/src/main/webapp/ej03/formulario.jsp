@@ -32,7 +32,14 @@
  <table>
     <form action="usuarios/alta" method="post">
         <tr>
-            <th> NIF <input type="text" name="nif" value="<%=nif%>"> </th>
+            <th>
+                NIF <input type="text" name="nif" value="<%=nif%>">
+                <% if(errors.get("nif") != null) { %>
+                <div style="background-color: red; color: blue; font-size: 0.7em; font-family: italic">
+                    <%=errors.get("nif")%>
+                </div>
+                <%}%>
+            </th>
         </tr>
         <tr>
             <th> Nombre <input type="text" name="nombre" value="<%=nombre%>"> </th>

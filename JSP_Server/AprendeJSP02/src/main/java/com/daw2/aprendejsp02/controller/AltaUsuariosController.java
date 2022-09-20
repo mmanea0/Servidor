@@ -10,10 +10,17 @@ import java.util.Map;
 
 //el value sirve para poner la forma abreviada en el navegador
 //el value va con barra y en l form va sin barra
-@WebServlet(name = "AltaUsuariosController", value = "/usuarios/alta")
+@WebServlet(name = "AltaUsuariosController", value ="/usuarios/alta")
 public class AltaUsuariosController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        request.setAttribute("nif","");
+        request.setAttribute("nombre","");
+        request.setAttribute("apellido1","");
+        request.setAttribute("apellido2","");
+        request.setAttribute("errors",new HashMap());
+
         request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
     }
 
@@ -41,12 +48,12 @@ public class AltaUsuariosController extends HttpServlet {
         request.setAttribute("apellido1",apellido1);
         request.setAttribute("apellido2",apellido2);
         //para mostrar los errores que se han producido
-        request.setAttribute("error",errors);
+        request.setAttribute("errors",errors);
 
         //en funcion de si hay error o no te manda a la ficha o al formulario de vuelta
         if(errors.isEmpty())
             request.getRequestDispatcher("/ej03/ficha.jsp").forward(request,response);
         else
-            request.getRequestDispatcher("/ej03/formulario.jsp");
+            request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
     }
 }
