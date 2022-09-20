@@ -1,5 +1,7 @@
 package com.daw2.aprendejsp02.controller;
 
+import com.daw2.aprendejsp02.model.entity.Usuario;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,13 +9,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //el value sirve para poner la forma abreviada en el navegador
 //el value va con barra y en l form va sin barra
 @WebServlet(name = "AltaUsuariosController", value ="/usuarios/alta")
 public class AltaUsuarios04Controller extends HttpServlet {
+    private List<Usuario> usuarios;
+
+    //para cuando se inicialice el servidor comience el metodo
+    @Override
+    public void init() throws ServletException {
+        usuarios=new ArrayList();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -22,6 +34,7 @@ public class AltaUsuarios04Controller extends HttpServlet {
         request.setAttribute("apellido1","");
         request.setAttribute("apellido2","");
         request.setAttribute("errors",new HashMap());
+        request.setAttribute("usuarios",usuarios);
 
         request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
     }
@@ -33,6 +46,13 @@ public class AltaUsuarios04Controller extends HttpServlet {
         String nombre = request.getParameter("nombre").trim();
         String apellido1 = request.getParameter("apellido1").trim();
         String apellido2 = request.getParameter("apellido2").trim();
+
+        //clase usuario
+        Usuario usuario=new Usuario();
+        usuario.setNif(nif);
+        usuario.setNombre(nombre);
+        usuario.setApellido1(apellido1);
+        usuario.setApellido2(apellido2);
 
         //empty quiere decir si esta vacio el campo
         Map errors= new HashMap();
@@ -51,11 +71,13 @@ public class AltaUsuarios04Controller extends HttpServlet {
         request.setAttribute("apellido2",apellido2);
         //para mostrar los errores que se han producido
         request.setAttribute("errors",errors);
+        //añadir datos
+        request.setAttribute("usuarios",usuarios);
 
         //en funcion de si hay error o no te manda a la ficha o al formulario de vuelta
-        if(errors.isEmpty())
-            request.getRequestDispatcher("/ej03/ficha.jsp").forward(request,response);
-        else
+        if(errors.isEmpty()) {
+            request.getRequestDispatcher("/ej03/ficha.jsp").forward(request, response);
+        }else
             request.getRequestDispatcher("/ej03/formulario.jsp").forward(request,response);
     }
 }
