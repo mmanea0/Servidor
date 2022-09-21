@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="infoBA:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>infoBA</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="infoBA-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="infoBA:war exploded" />
+    </root>
+  </artifact>
+</component>
