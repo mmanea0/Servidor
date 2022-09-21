@@ -24,3 +24,9 @@ PROYECTO INFOBA
         head.jsp
         header.jsp
         footer.jsp
+6.- Creamos directorios especificos
+    sections
+    sections/articulos
+        articulos->layouts
+    sections/proveedores
+        proveedores->layouts
