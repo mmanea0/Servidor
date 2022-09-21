@@ -41,7 +41,7 @@
                 Descripcion <input type="text" name="descripcion" value="<%=producto.getDescripcion()%>">
                 <% if (errors.get("descripcion") != null) { %>
                 <div style="background-color: red; color: blue; font-size: 0.7em; font-family: italic">
-                    <%=errors.get("discripcion")%>
+                    <%=errors.get("descripcion")%>
                 </div>
                 <%}%>
             </th>

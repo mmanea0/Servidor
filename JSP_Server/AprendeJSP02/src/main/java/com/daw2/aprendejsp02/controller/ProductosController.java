@@ -63,9 +63,9 @@ public class ProductosController extends HttpServlet {
             errors.put("nombre","El nombre no puede estar vacio");
         if (descripcion.isEmpty())
             errors.put("descripcion","La descripcion no puede estar vacio");
-        if (precio.isNaN())
+        if (String.valueOf(precio).isEmpty())
             errors.put("precio","El precio no puede estar vacio");
-        if(unidades.isNaN())
+        if(String.valueOf(unidades).isEmpty())
             errors.put("unidades","Las unidades no pueden estar vacias");
 
         request.setCharacterEncoding("UTF-8");
