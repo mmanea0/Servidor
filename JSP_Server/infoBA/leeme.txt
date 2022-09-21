@@ -47,3 +47,8 @@ PROYECTO INFOBA
         <%--enlace js --%>
         <script src="js/main.js"></script>
     </head>
+10.- Creamos un jsp y un controller para dar de altas articulos
+    sections/articulos/alta.jsp
+    sections/articulos/layouts/formulario.jsp
+    sections/articulos/layouts/listado.jsp
+    controller.articulos.AltaArticulosController
