@@ -2,4 +2,25 @@ PROYECTO INFOBA
 ---------------
 1.- Creamos el proyecto
 2.- Añadir las dependencias(pom.xml). MYSQL y pool de conexiones
-3.-
+3.- Crear la estructura basica de paquetes
+        -model
+            -dao
+            -entity
+        -service
+        -controller
+        -util
+4.- Añadimos paquetes especificos
+    controller-> articulos
+    controller-> proveedores
+5.- Creamos la estructura basica
+    css
+        main.css
+    js
+        main.js
+    imagenes
+        favicon.ico
+        logo.png
+    layout
+        head.jsp
+        header.jsp
+        footer.jsp
