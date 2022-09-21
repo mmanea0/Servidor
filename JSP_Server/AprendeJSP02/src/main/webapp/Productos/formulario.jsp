@@ -87,6 +87,7 @@
         <td><%=us.getPrecio()%></td>
         <td><%=us.getUnidades()%></td>
     </tr>
+    <%}%>
 </table>
 
 </body>
