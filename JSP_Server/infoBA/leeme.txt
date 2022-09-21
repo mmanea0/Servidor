@@ -57,3 +57,6 @@ PROYECTO INFOBA
 11.- Creamos dos services (en principio vacios)
     ArticulosService
     ProveedoresService
+12.- Acceso a la base de datos http://iescastelar.duckdns.org:8010/phpmyadmin/
+    Usuario: daw2_aprendejsp12
+    password: castelar
