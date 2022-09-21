@@ -60,3 +60,5 @@ PROYECTO INFOBA
 12.- Acceso a la base de datos http://iescastelar.duckdns.org:8010/phpmyadmin/
     Usuario: daw2_aprendejsp12
     password: castelar
+    puerto 33062
+13.- Probamos conexion, configuracion del IDE y creacion de tablas en sql
