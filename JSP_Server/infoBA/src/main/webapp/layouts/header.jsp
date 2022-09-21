@@ -32,9 +32,33 @@
     </div>
 </nav>
 
+<%--Mensaje de todo correcto, verde--%>
 <%if (request.getAttribute("alertSuccess") != null) {%>
 <div class="alert alert-success mensaje-temporal">
-    <i class="fa-solid fa-thumbs-up fa-1x"></i>
+    <i class="fa-solid fa-thumbs-up fa-1x"></i> <%--Esto es el icono--%>
     <%=request.getAttribute("alertSuccess")%>
+</div>
+<%}%>
+
+<%--Mensaje de Peligro, rojo--%>
+<%if (request.getAttribute("alertDanger") != null) {%>
+<div class="alert alert-danger mensaje-temporal">
+    <i class="fa-solid fa-thumbs-down fa-1x"></i>
+    <%=request.getAttribute("alertDanger")%>
+</div>
+<%}%>
+
+<%--Mensaje de Cuidado--%>
+<%if (request.getAttribute("alertWarning") != null) {%>
+<div class="alert alert-warning mensaje-temporal">
+    <i class="fa-solid fa-triangle-exclamation fa-1x"></i>
+    <%=request.getAttribute("alertWarning")%>
+</div>
+<%}%>
+
+<%if (request.getAttribute("alertInfo") != null) {%>
+<div class="alert alert-info mensaje-temporal">
+    <i class="fa-solid fa-square-info fa-1x"></i>
+    <%=request.getAttribute("alertInfo")%>
 </div>
 <%}%>
