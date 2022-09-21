@@ -58,7 +58,7 @@
         </tr>
         <tr>
             <th>
-                Unidades <input type="text" name="unidades" value="<%=producto.getUnidades()%>">
+                Unidades <input type="text" name="unidades" value="<%=producto.getNombre()%>">
                 <% if (errors.get("unidades") != null) { %>
                 <div style="background-color: red; color: blue; font-size: 0.7em; font-family: italic">
                     <%=errors.get("unidades")%>
