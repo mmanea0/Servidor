@@ -13,6 +13,8 @@
     <br/>
     <a href="hello-servlet">Hello Servlet</a>
 </div>
+
 <jsp:include page="/layouts/footer.jsp"></jsp:include>
+
 </body>
 </html>
