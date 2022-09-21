@@ -80,7 +80,7 @@
         <th>Precio</th>
         <th>Unidades</th>
     </tr>
-    <%for(Producto us:productos){%>
+    <% for(Producto us:productos){%>
     <tr style="background-color: darksalmon">
         <td><%=us.getNombre()%></td>
         <td><%=us.getDescripcion()%></td>
