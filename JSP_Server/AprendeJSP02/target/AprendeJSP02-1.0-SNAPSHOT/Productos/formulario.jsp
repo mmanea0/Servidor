@@ -80,14 +80,21 @@
         <th>Precio</th>
         <th>Unidades</th>
     </tr>
-    <% for(Producto us:productos){%>
+    <%Double preciototal=0.0;
+     for(Producto us:productos){%>
     <tr style="background-color: darksalmon">
         <td><%=us.getNombre()%></td>
         <td><%=us.getDescripcion()%></td>
         <td><%=us.getPrecio()%></td>
         <td><%=us.getUnidades()%></td>
     </tr>
-    <%}%>
+    <%
+    preciototal=preciototal+us.suma();
+    }%>
+    <tr>
+        <th>Precio total</th>
+        <th><%=preciototal%></th>
+    </tr>
 </table>
 
 </body>

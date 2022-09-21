@@ -71,7 +71,7 @@ public class ProductosController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         request.setAttribute("producto",producto);
         request.setAttribute("errors",errors);
-        request.setAttribute("usuarios",productos);
+        request.setAttribute("productos",productos);
 
         if(errors.isEmpty()) {
             productos.add(producto);
