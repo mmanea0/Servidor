@@ -31,3 +31,10 @@
         </div>
     </div>
 </nav>
+
+<%if (request.getAttribute("alertSuccess") != null) {%>
+<div class="alert alert-success mensaje-temporal">
+    <i class="fa-solid fa-thumbs-up fa-1x"></i>
+    <%=request.getAttribute("alertSuccess")%>
+</div>
+<%}%>
