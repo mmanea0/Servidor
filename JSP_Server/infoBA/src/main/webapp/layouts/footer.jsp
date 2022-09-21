@@ -1,16 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: daw2
-  Date: 21/09/2022
-  Time: 16:27
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<hr/>
+<div class="bg-light mt-3 p-2">
+    <img src="imagenes/logo.png" style="width: 100px;" alt="Logo">
+    I.E.S. Castelar - Desarrollo de Aplicaciones Web
+</div>
