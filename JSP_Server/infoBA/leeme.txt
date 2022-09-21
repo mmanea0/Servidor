@@ -30,3 +30,5 @@ PROYECTO INFOBA
         articulos->layouts
     sections/proveedores
         proveedores->layouts
+7.- Ejecutamos antes de configurar
+8.- Creamos los layouts
