@@ -56,6 +56,7 @@
 </div>
 <%}%>
 
+<%--Mensaje de info--%>
 <%if (request.getAttribute("alertInfo") != null) {%>
 <div class="alert alert-info mensaje-temporal">
     <i class="fa-solid fa-square-info fa-1x"></i>
