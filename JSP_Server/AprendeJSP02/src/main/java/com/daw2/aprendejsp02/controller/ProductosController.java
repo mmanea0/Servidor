@@ -1,5 +1,6 @@
 package com.daw2.aprendejsp02.controller;
 
+import com.daw2.aprendejsp02.model.entity.Producto;
 import com.daw2.aprendejsp02.model.entity.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,65 +16,67 @@ import java.util.Map;
 
 //el value sirve para poner la forma abreviada en el navegador
 //el value va con barra y en l form va sin barra
-@WebServlet(name = "AltaUsuarios04Controller", value ="/usuarios/alta_ej04")
+@WebServlet(name = "ProductosController", value ="/productos")
 public class ProductosController extends HttpServlet {
-    private List<Usuario> usuarios;
+    private List<Producto> productos;
 
     //para cuando se inicialice el servidor comience el metodo
     @Override
     public void init() throws ServletException {
-        usuarios=new ArrayList();
+        productos=new ArrayList();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        Usuario usuario=new Usuario();
-        usuario.setNif("");
-        usuario.setNombre("");
-        usuario.setApellido1("");
-        usuario.setApellido2("");
+        Producto producto=new Producto();
+        producto.setNombre("");
+        producto.setDescripcion("");
+        producto.setPrecio(0.0);
+        producto.setUnidades(0.0);
 
-        request.setAttribute("usuario",usuario);
-        request.setAttribute("usuarios",usuarios);
+        request.setAttribute("producto",producto);
+        request.setAttribute("productos",productos);
         request.setAttribute("errors",new HashMap());
 
-        request.getRequestDispatcher("/ej04/formulario.jsp").forward(request,response);
+        request.getRequestDispatcher("/Productos/formulario.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //esto es para procesar los datos recibidos
-        String nif = request.getParameter("nif").trim();
         String nombre = request.getParameter("nombre").trim();
-        String apellido1 = request.getParameter("apellido1").trim();
-        String apellido2 = request.getParameter("apellido2").trim();
+        String descripcion = request.getParameter("descripcion").trim();
+        Double precio = Double.valueOf(request.getParameter("precio").trim());
+        Double unidades = Double.valueOf(request.getParameter("unidades").trim());
 
         //clase usuario
-        Usuario usuario=new Usuario();
-        usuario.setNif(nif);
-        usuario.setNombre(nombre);
-        usuario.setApellido1(apellido1);
-        usuario.setApellido2(apellido2);
+        Producto producto=new Producto();
+        producto.setNombre(nombre);
+        producto.setDescripcion(descripcion);
+        producto.setPrecio(precio);
+        producto.setUnidades(unidades);
 
         Map errors= new HashMap();
-        if (nif.isEmpty())
-            errors.put("nif","El nif no puede estar vacio");
         if (nombre.isEmpty())
             errors.put("nombre","El nombre no puede estar vacio");
-        if (apellido1.isEmpty())
-            errors.put("apellido1","El apellido1 no puede estar vacio");
+        if (descripcion.isEmpty())
+            errors.put("descripcion","La descripcion no puede estar vacio");
+        if (precio.isNaN())
+            errors.put("precio","El precio no puede estar vacio");
+        if(unidades.isNaN())
+            errors.put("unidades","Las unidades no pueden estar vacias");
 
         request.setCharacterEncoding("UTF-8");
-        request.setAttribute("usuario",usuario);
+        request.setAttribute("producto",producto);
         request.setAttribute("errors",errors);
-        request.setAttribute("usuarios",usuarios);
+        request.setAttribute("usuarios",productos);
 
         if(errors.isEmpty()) {
-            usuarios.add(usuario);
-            request.getRequestDispatcher("/ej04/formulario.jsp").forward(request, response);
+            productos.add(producto);
+            request.getRequestDispatcher("/Productos/formulario.jsp").forward(request, response);
         }else
-            request.getRequestDispatcher("/ej04/formulario.jsp").forward(request,response);
+            request.getRequestDispatcher("/Productos/formulario.jsp").forward(request,response);
     }
 }
