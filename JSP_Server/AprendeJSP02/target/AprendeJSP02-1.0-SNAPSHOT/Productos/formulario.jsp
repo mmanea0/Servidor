@@ -24,7 +24,7 @@
 <body>
 <h1>Productos</h1>
 
-<table>
+<table style="background-color: aqua" border="1">
     <form action="productos" method="post">
         <tr>
             <th>

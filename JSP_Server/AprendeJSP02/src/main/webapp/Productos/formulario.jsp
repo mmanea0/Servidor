@@ -1,6 +1,7 @@
 <%@ page import="com.daw2.aprendejsp02.model.entity.Producto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="com.daw2.aprendejsp02.model.entity.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: luis_
   Date: 21/09/2022
@@ -24,7 +25,7 @@
 <body>
 <h1>Productos</h1>
 
-<table>
+<table style="background-color: aqua" border="1">
     <form action="productos" method="post">
         <tr>
             <th>
@@ -70,6 +71,22 @@
             <th><input type="submit" value="Registrar"></th>
         </tr>
     </form>
+</table>
+
+<table style="background-color:#cea4f6 " border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Unidades</th>
+    </tr>
+    <%for(Producto us:productos){%>
+    <tr style="background-color: darksalmon">
+        <td><%=us.getNombre()%></td>
+        <td><%=us.getDescripcion()%></td>
+        <td><%=us.getPrecio()%></td>
+        <td><%=us.getUnidades()%></td>
+    </tr>
 </table>
 
 </body>
