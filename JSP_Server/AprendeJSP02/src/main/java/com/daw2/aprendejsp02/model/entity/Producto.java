@@ -40,4 +40,9 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public double suma(){
+        double resultado = precio*unidades;
+        return resultado;
+    }
 }
