@@ -1,0 +1,5 @@
+PROYECTO INFOBA
+---------------
+1.- Creamos el proyecto
+2.- Añadir las dependencias(pom.xml). MYSQL y pool de conexiones
+3.-
