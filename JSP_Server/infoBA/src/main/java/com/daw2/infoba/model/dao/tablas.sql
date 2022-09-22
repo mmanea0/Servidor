@@ -23,13 +23,14 @@ CREATE TABLE articulos( id INTEGER  AUTO_INCREMENT,
                        CONSTRAINT UQ_ref UNIQUE (ref));
 
 CREATE TABLE habitaciones ( id INTEGER AUTO_INCREMENT,
-                            numero INTEGER NOT NULL,
-                            capacidad VARCHAR(3) NOT NULL,
-                            fumador BOOLEAN NOT NULL ,
+                            numero VARCHAR(10) NULL,
+                            capacidad INTEGER NOT NULL,
+                            fumador BOOLEAN,
                             descripcion VARCHAR(100),
                             created_at DATETIME NOT NULL,
                             modified DATETIME NOT NULL,
-                            PRIMARY KEY (id));
+                            PRIMARY KEY (id),
+                            CONSTRAINT UQ_numero UNIQUE (numero));
 
 ALTER TABLE articulos ADD CONSTRAINT FK_proveedor_id FOREIGN KEY (proveedor_id) REFERENCES proveedores(id);
 

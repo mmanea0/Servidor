@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Habitacion {
     private Integer id;
-    private  Integer numero;
-    private String capacidad;
+    private  String numero;
+    private Integer capacidad;
     private Boolean fumador;
     private String descripcion;
     private Date createdAt;
@@ -14,7 +14,7 @@ public class Habitacion {
     public Habitacion(){
     }
 
-    public Habitacion(Integer id, Integer numero, String capacidad, Boolean fumador, String descripcion, Date createdAt, Date modifiedAt) {
+    public Habitacion(Integer id, String numero, Integer capacidad, Boolean fumador, String descripcion, Date createdAt, Date modifiedAt) {
         this.id = id;
         this.numero = numero;
         this.capacidad = capacidad;
@@ -32,19 +32,19 @@ public class Habitacion {
         this.id = id;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
-    public String getCapacidad() {
+    public Integer getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(String capacidad) {
+    public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 
