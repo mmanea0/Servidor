@@ -198,8 +198,8 @@ public class ProveedoresDaoImpl implements ProveedoresDao {
     private Integer _add(Proveedor entity) throws SQLException {
         Integer id;
         String sql = "INSERT INTO proveedores "
-                + "(nif, razon_social, nombre, apellido1, apellido2, telefono, email. created_at, modified_at) VALUES "
-                + "(?,?,?,?,?,?)";
+                + "(nif, razon_social, nombre, apellido1, apellido2, telefono, email, created_at, modified_at) VALUES "
+                + "(?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, entity.getNif());
         ps.setString(2, entity.getRazonSocial());
