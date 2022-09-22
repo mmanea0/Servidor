@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Articulo implements Serializable {
+public class Articulo{
     private Integer id;
     private String ref;
     private String descripcion;
