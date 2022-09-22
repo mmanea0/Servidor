@@ -22,7 +22,7 @@ public class ArticulosDaoImpl implements ArticulosDao {
             connection = ConectaBD.getConnection();
         } catch (SQLException e) {
             error = true;
-            System.out.println("Se ha producido un error al acceder a la BD.");
+            System.err.println("Se ha producido un error al acceder a la BD.");
         }
     }
 
