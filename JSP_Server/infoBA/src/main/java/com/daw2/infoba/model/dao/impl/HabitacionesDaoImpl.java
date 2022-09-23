@@ -1,18 +1,14 @@
 package com.daw2.infoba.model.dao.impl;
+
 import com.daw2.infoba.model.dao.ConectaBD;
 import com.daw2.infoba.model.dao.HabitacionesDao;
-import com.daw2.infoba.model.dao.ProveedoresDao;
-import com.daw2.infoba.model.entity.Articulo;
 import com.daw2.infoba.model.entity.Habitacion;
-import com.daw2.infoba.model.entity.Proveedor;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class HabitacionesDaoImpl implements HabitacionesDao {
-
     private Connection connection;
 
     private boolean error;
@@ -185,6 +181,11 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
         return error;
     }
 
+    @Override
+    public boolean exist(int id) {
+        return HabitacionesDao.super.exist(id);
+    }
+
     private Integer _add(Habitacion entity) throws SQLException {
         Integer id;
         String sql = "INSERT INTO habitaciones "
@@ -209,4 +210,8 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
         return id;
     }
 
+    @Override
+    public List<Habitacion> listAllFillHabitacion() {
+        return null;
+    }
 }
