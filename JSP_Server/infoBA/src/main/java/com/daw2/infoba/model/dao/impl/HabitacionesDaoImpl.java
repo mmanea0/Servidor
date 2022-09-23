@@ -45,6 +45,113 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
         return id;
     }
 
+    @Override
+    public boolean add(List<Habitacion> list) {
+        error = false;
+        try {
+            for (Habitacion entity : list) {
+                _add(entity);
+            }
+            connection.commit();
+        } catch (SQLException ex) {
+            error = true;
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+            }
+        }
+        return !error;
+    }
+
+    @Override
+    public boolean update(Habitacion entity) {
+        error = false;
+        String sql = "UPDATE habitaciones SET "
+                + "numero=?, capacidad=?, fumador=?, descripcion=?, "
+                + "created_at=?, modified_at=? "
+                + "WHERE id=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, entity.getNumero());
+            ps.setInt(2, entity.getCapacidad());
+            ps.setBoolean(3, entity.getFumador());
+            ps.setString(4, entity.getDescripcion());
+            ps.setDate(5, utilDateToSqlDate(entity.getCreatedAt()));
+            ps.setDate(6, utilDateToSqlDate(entity.getModifiedAt()));
+            ps.setInt(7, entity.getId());
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException ex) {
+            error = true;
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+            }
+        }
+        return !error;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        error = false;
+        String sql = "DELETE FROM habitaciones "
+                + "WHERE id=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException ex) {
+            error = true;
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+            }
+        }
+        return !error;
+    }
+
+    @Override
+    public boolean deleteAll() {
+        error = false;
+        try {
+            String sql = "DELETE FROM habitaciones";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.executeUpdate();
+            connection.commit();
+        } catch (SQLException ex) {
+            error = true;
+        }
+        return !error;
+    }
+
+    @Override
+    public Habitacion get(int id) {
+        error = false;
+        Habitacion entity = null;
+        String sql = "SELECT "
+                + "id, numero,capacidad, fumador, descripcion, "
+                + "created_at, modified_at "
+                + "FROM habitaciones WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                entity = new Habitacion();
+                entity.setId(rs.getInt("id"));
+                entity.setNumero(rs.getString("numero"));
+                entity.setCapacidad(rs.getInt("capacidad"));
+                entity.setFumador(rs.getBoolean("fumador"));
+                entity.setDescripcion(rs.getString("descripcion"));
+                entity.setCreatedAt(rs.getDate("created_at"));
+                entity.setCreatedAt(rs.getDate("modified_at"));
+            }
+            rs.close();
+        } catch (Exception ex) {
+            error = true;
+        }
+        return entity;
+    }
+
+
     public List<Habitacion> listAll() {
         error = false;
         Habitacion entity = null;
@@ -60,9 +167,7 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
                 entity.setNumero(rs.getString("numero"));
                 entity.setCapacidad(rs.getInt("capacidad"));
                 entity.setFumador(rs.getBoolean("fumador"));
-                Habitacion habitacion = new Habitacion();
-                habitacion.setId(rs.getInt("habitacion_id"));
-                entity.setHabitacion(habitacion);
+                entity.setDescripcion(rs.getString("descripcion"));
                 entity.setCreatedAt(rs.getDate("created_at"));
                 entity.setModifiedAt(rs.getDate("modified_at"));
                 list.add(entity);
@@ -87,9 +192,9 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
                 + "(?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, entity.getNumero());
-        ps.setString(2, entity.getCapacidad());
-        ps.setDouble(3, entity.getFumador());
-        ps.setInt(4, entity.getHabitacion!=null?entity.getHabitacion().getId():null);
+        ps.setInt(2, entity.getCapacidad());
+        ps.setBoolean(3, entity.getFumador());
+        ps.setString(4, entity.getDescripcion());
         // ps.setDate(7, new java.sql.Date(entity.getFechaAlta().getTime()));
         ps.setDate(5, utilDateToSqlDate(entity.getCreatedAt()));
         ps.setDate(6, utilDateToSqlDate(entity.getModifiedAt()));
@@ -104,11 +209,4 @@ public class HabitacionesDaoImpl implements HabitacionesDao {
         return id;
     }
 
-
-    public List<Habitacion> listAllFillProveedor() {
-        HabitacionesDao habitacionesDao = new HabitacionesDaoImpl();
-        List<Habitacion> list = listAll();
-        list.forEach(e->e.setHabitacion(habitacionesDao.get(e.getHabitacion().getId())));
-        return list;
-    }
 }
